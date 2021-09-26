@@ -15,7 +15,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataManager().getData(with: DataManager().apiUrl)
 }
 
     @IBAction func logInTapped(_ sender: UIButton) {

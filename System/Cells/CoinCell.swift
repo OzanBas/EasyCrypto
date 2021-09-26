@@ -22,6 +22,7 @@ class CoinCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+        
     
 }
 

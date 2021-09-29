@@ -16,4 +16,5 @@ struct FavoritesViewModel {
 }
 
 var favoritesViewArray : [FavoritesViewModel] =  []
+var selectedCoins : [String] = []
 

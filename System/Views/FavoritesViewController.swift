@@ -20,7 +20,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title.self = "Top 100"
+        title.self = "Favorites"
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
         favoritesTableView.register(UINib(nibName: "CoinCell", bundle: nil), forCellReuseIdentifier: "favoritesCell")
@@ -43,7 +43,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath) as! CoinCell
+        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "ListViewCell", for: indexPath) as! ListViewCell
         
 //        TODO
         

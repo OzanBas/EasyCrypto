@@ -11,6 +11,7 @@ import UIKit
 struct ListViewModel {
     var name: String?
     var image: String?
+    var id: String?
 
 }
 

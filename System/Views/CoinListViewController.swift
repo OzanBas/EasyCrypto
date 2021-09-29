@@ -9,6 +9,7 @@ import UIKit
 
 
 
+
 //MARK: - CoinListViewController
 
 class CoinListViewController: UIViewController {
@@ -18,27 +19,30 @@ class CoinListViewController: UIViewController {
     
     let ListViewApiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     let manager = DataManager()
+    let listViewCell = ListViewCell()
+    
+    func tryDelegate(cell: UITableViewCell) {
+        print("inside VC")
+        let index = coinListViewTable.indexPath(for: cell)
+        let name = ListViewArray[index!.row].name
+        print(name)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title.self = "Top 100"
         manager.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         configureTableView()
         didFinishUpdating()
-
-    }
-}
-extension CoinListViewController {
-    func configureTableView() {
-        if ListViewArray.count == 0 {
-            manager.getData(with: ListViewApiUrl)
-        }
-        self.coinListViewTable.dataSource = self
-        self.coinListViewTable.register(UINib(nibName: "CoinCell", bundle: nil), forCellReuseIdentifier: "favoritesCell")
     }
 }
 
-
-//MARK: - TableViewDataSource
+//MARK: - TABLEVIEW RELATED SECTION
 
 extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,8 +51,9 @@ extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = coinListViewTable.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath) as! CoinCell
+        let cell = coinListViewTable.dequeueReusableCell(withIdentifier: "ListViewCell", for: indexPath) as! ListViewCell
         
+        cell.link = self
         cell.labelOfCell.text = ListViewArray[indexPath.row].name
         cell.imageOfCell.downloaded(from: ListViewArray[indexPath.row].image!)
                 
@@ -59,10 +64,27 @@ extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
+        if let selectedCoin = ListViewArray[indexPath.row].id {
+            selectedCoins.append(selectedCoin)
+        }
+    }
+}
+
+//MARK: - ConfigureTableView
+    
+extension CoinListViewController {
+    func configureTableView() {
+        if ListViewArray.count == 0 {
+            manager.getData(with: ListViewApiUrl)
+        }
+        self.coinListViewTable.dataSource = self
+        self.coinListViewTable.register(UINib(nibName: "ListViewCell", bundle: nil), forCellReuseIdentifier: "ListViewCell")
     }
 }
 
 
+//MARK: - DataManagerDelegate
 extension CoinListViewController: DataManagerDelegate {
     func didFinishUpdating() {
         DispatchQueue.main.async {

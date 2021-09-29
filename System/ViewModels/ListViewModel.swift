@@ -8,10 +8,12 @@
 import UIKit
 
 
-struct ListViewModel {
+struct ListViewModel : Hashable{
     var name: String?
     var image: String?
     var id: String?
+    var current_price : Double?
+    var isFavorite : Bool
 
 }
 

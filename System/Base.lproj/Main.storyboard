@@ -38,18 +38,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Syy-sE-e1h">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Syy-sE-e1h">
+                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6Qe-Yd-QKa">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Qe-Yd-QKa" id="Pqq-A9-7Ug">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQQ-ua-Qfa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iqa-HP-hbv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Syy-sE-e1h" firstAttribute="top" secondItem="iqa-HP-hbv" secondAttribute="top" id="8q1-ea-ZKD"/>
+                            <constraint firstItem="Syy-sE-e1h" firstAttribute="top" secondItem="iqa-HP-hbv" secondAttribute="top" constant="50" id="8q1-ea-ZKD"/>
                             <constraint firstItem="Syy-sE-e1h" firstAttribute="leading" secondItem="iqa-HP-hbv" secondAttribute="leading" id="9nJ-ex-0Na"/>
+                            <constraint firstItem="Syy-sE-e1h" firstAttribute="top" secondItem="JQQ-ua-Qfa" secondAttribute="bottom" id="AGf-l3-sA2"/>
                             <constraint firstItem="Syy-sE-e1h" firstAttribute="trailing" secondItem="iqa-HP-hbv" secondAttribute="trailing" id="PGv-HX-yqu"/>
+                            <constraint firstItem="JQQ-ua-Qfa" firstAttribute="leading" secondItem="iqa-HP-hbv" secondAttribute="leading" id="fRk-6B-sUG"/>
                             <constraint firstAttribute="bottom" secondItem="Syy-sE-e1h" secondAttribute="bottom" id="g7W-3a-Fuk"/>
+                            <constraint firstItem="JQQ-ua-Qfa" firstAttribute="top" secondItem="iqa-HP-hbv" secondAttribute="top" id="v2e-PV-rrc"/>
+                            <constraint firstItem="iqa-HP-hbv" firstAttribute="trailing" secondItem="JQQ-ua-Qfa" secondAttribute="trailing" id="zhI-iY-O5h"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Top 100" id="jdC-ub-O5M">
@@ -112,7 +132,7 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 100 Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-ce-irW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

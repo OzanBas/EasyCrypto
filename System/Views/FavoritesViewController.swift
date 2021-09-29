@@ -17,19 +17,27 @@ class FavoritesViewController: UIViewController {
     @IBOutlet var defaultBGView: UIView!
     @IBOutlet weak var defaultBGLabel: UILabel!
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title.self = "Favorites"
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
-        favoritesTableView.register(UINib(nibName: "CoinCell", bundle: nil), forCellReuseIdentifier: "favoritesCell")
-        
+        favoritesTableView.register(UINib(nibName: "PriceCell", bundle: nil), forCellReuseIdentifier: "PriceCell")
     }
     
-    private func configureTableView() {
-        
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        handleDataArray()
+        DispatchQueue.main.async {
+            self.favoritesTableView.reloadData()
+        }
+    }
+    
+    private func handleDataArray() {
+        favsViewArray = ListViewArray.filter{$0.isFavorite == true}
+        print(favsViewArray.count)
     }
 }
 
@@ -39,13 +47,17 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favoritesViewArray.count
+        favsViewArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "ListViewCell", for: indexPath) as! ListViewCell
+        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "PriceCell", for: indexPath) as! PriceCell
         
-//        TODO
+        cell.nameLabel.text = favsViewArray[indexPath.row].name
+        cell.cellImage.downloaded(from: favsViewArray[indexPath.row].image!)
+        cell.priceLabel.text = String("$\(favsViewArray[indexPath.row].current_price!)")
+
+        
         
         return cell
     }

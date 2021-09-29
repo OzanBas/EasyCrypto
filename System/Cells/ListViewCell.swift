@@ -25,15 +25,8 @@ class ListViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        detailButton.addTarget(self, action: #selector(handleGoDetail), for: .touchUpInside)
-
-        favButton.addTarget(self, action: #selector(handleFavoriteStasus), for: .touchUpInside)
     }
 
-    
-    @objc private func handleGoDetail() {
-        print("want to show details now")
-    }
     
     
     @objc private func handleFavoriteStasus() {
@@ -47,10 +40,11 @@ class ListViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+//        favButton.addTarget(self, action: #selector(handleFavoriteStasus), for: .touchUpInside)
     }
 
     @IBAction func favButtonTapped(_ sender: UIButton) {
-        link?.tryDelegate(cell: self)
+        link?.handleFavorites(cell: self)
     }
     
     @IBAction func detailButtonTapped(_ sender: UIButton) {

@@ -21,13 +21,17 @@ class CoinListViewController: UIViewController {
     let manager = DataManager()
     let listViewCell = ListViewCell()
     
-    func tryDelegate(cell: UITableViewCell) {
-        print("inside VC")
+
+    func handleFavorites(cell: UITableViewCell) {
         let index = coinListViewTable.indexPath(for: cell)
-        let name = ListViewArray[index!.row].name
-        print(name)
-        
-        
+        print(ListViewArray[index!.row].isFavorite)
+
+        if ListViewArray[index!.row].isFavorite == false {
+            ListViewArray[index!.row].isFavorite = true
+        } else {
+            ListViewArray[index!.row].isFavorite = false
+        }
+        coinListViewTable.reloadRows(at: [index!], with: .fade)
     }
     
     override func viewDidLoad() {
@@ -56,18 +60,10 @@ extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.link = self
         cell.labelOfCell.text = ListViewArray[indexPath.row].name
         cell.imageOfCell.downloaded(from: ListViewArray[indexPath.row].image!)
+        cell.favImage.image = ListViewArray[indexPath.row].isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
                 
         return cell
         
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        
-        if let selectedCoin = ListViewArray[indexPath.row].id {
-            selectedCoins.append(selectedCoin)
-        }
     }
 }
 

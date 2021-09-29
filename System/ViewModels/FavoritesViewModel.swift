@@ -8,13 +8,13 @@
 import UIKit
 
 
-struct FavoritesViewModel {
+struct FavoritesViewModel : Hashable {
     var name: String?
     var image: String?
-    var current_price: Double
-
+    var current_price: Double?
+    var isFavorite : Bool
 }
 
-var favoritesViewArray : [FavoritesViewModel] =  []
-var selectedCoins : [String] = []
+var favsViewArray : [ListViewModel] = []
+
 

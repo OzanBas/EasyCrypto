@@ -21,7 +21,6 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title.self = "Favorites"
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
         favoritesTableView.register(UINib(nibName: "PriceCell", bundle: nil), forCellReuseIdentifier: "PriceCell")
@@ -29,16 +28,13 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        handleDataArray()
         DispatchQueue.main.async {
+            getSelections()
             self.favoritesTableView.reloadData()
         }
     }
     
-    private func handleDataArray() {
-        favsViewArray = ListViewArray.filter{$0.isFavorite == true}
-        print(favsViewArray.count)
-    }
+
 }
 
 
@@ -55,8 +51,9 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.nameLabel.text = favsViewArray[indexPath.row].name
         cell.cellImage.downloaded(from: favsViewArray[indexPath.row].image!)
-        cell.priceLabel.text = String("$\(favsViewArray[indexPath.row].current_price!)")
+        let price = favsViewArray[indexPath.row].current_price!
 
+        cell.priceLabel.text = "$\(String(format: "%.2f", price))"
         
         
         return cell

@@ -8,8 +8,6 @@
 import UIKit
 
 
-
-
 //MARK: - CoinListViewController
 
 class CoinListViewController: UIViewController {
@@ -22,17 +20,7 @@ class CoinListViewController: UIViewController {
     let listViewCell = ListViewCell()
     
 
-    func handleFavorites(cell: UITableViewCell) {
-        let index = coinListViewTable.indexPath(for: cell)
-        print(ListViewArray[index!.row].isFavorite)
 
-        if ListViewArray[index!.row].isFavorite == false {
-            ListViewArray[index!.row].isFavorite = true
-        } else {
-            ListViewArray[index!.row].isFavorite = false
-        }
-        coinListViewTable.reloadRows(at: [index!], with: .fade)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +31,19 @@ class CoinListViewController: UIViewController {
         super.viewWillAppear(true)
         configureTableView()
         didFinishUpdating()
+    }
+    
+    
+    func handleFavorites(cell: UITableViewCell) {
+        let index = coinListViewTable.indexPath(for: cell)
+        print(ListViewArray[index!.row].isFavorite)
+
+        if ListViewArray[index!.row].isFavorite == false {
+            ListViewArray[index!.row].isFavorite = true
+        } else {
+            ListViewArray[index!.row].isFavorite = false
+        }
+        coinListViewTable.reloadRows(at: [index!], with: .fade)
     }
 }
 
@@ -65,6 +66,7 @@ extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
         
     }
+    
 }
 
 //MARK: - ConfigureTableView
@@ -86,6 +88,17 @@ extension CoinListViewController: DataManagerDelegate {
         DispatchQueue.main.async {
             self.coinListViewTable.reloadData()
 
+        }
+    }
+    func didCheckFavoriteStasus() {
+        print("didCheckFavoriteStasus triggered.")
+        for item in 0...ListViewArray.count-1 {
+            for fav in favsViewArray {
+                if fav.id == ListViewArray[item].id {
+                    print("got one")
+                    ListViewArray[item].isFavorite = true
+                }
+            }
         }
     }
 }

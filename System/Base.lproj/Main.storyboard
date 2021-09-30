@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oci-Lp-b2Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tEk-W7-c4C">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -11,10 +11,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="uSO-Tk-FCN">
+            <objects>
+                <viewController id="tEk-W7-c4C" customClass="WelcomeViewController" customModule="Trader_Playground" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C8e-nP-dlr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EasyCryptoWallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMW-Ty-UqU">
+                                <rect key="frame" x="124.5" y="386" width="165" height="28"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track assets fast and easy." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cux-FP-cv3">
+                                <rect key="frame" x="104.5" y="429" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngegg" translatesAutoresizingMaskIntoConstraints="NO" id="xLQ-ud-rWY">
+                                <rect key="frame" x="123" y="213" width="168" height="123"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="0dm-Uu-t02"/>
+                                    <constraint firstAttribute="height" constant="123" id="fEW-dx-aGY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kbJ-nA-Voh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cux-FP-cv3" firstAttribute="centerX" secondItem="C8e-nP-dlr" secondAttribute="centerX" id="DPr-fL-te4"/>
+                            <constraint firstItem="xLQ-ud-rWY" firstAttribute="centerX" secondItem="C8e-nP-dlr" secondAttribute="centerX" id="Kzc-1Z-bHW"/>
+                            <constraint firstItem="xLQ-ud-rWY" firstAttribute="top" secondItem="kbJ-nA-Voh" secondAttribute="top" constant="169" id="Zfp-cA-OfX"/>
+                            <constraint firstItem="GMW-Ty-UqU" firstAttribute="centerX" secondItem="C8e-nP-dlr" secondAttribute="centerX" id="bY3-Gd-lO9"/>
+                            <constraint firstItem="cux-FP-cv3" firstAttribute="top" secondItem="GMW-Ty-UqU" secondAttribute="bottom" constant="15" id="sXp-so-Dg4"/>
+                            <constraint firstItem="GMW-Ty-UqU" firstAttribute="top" secondItem="xLQ-ud-rWY" secondAttribute="bottom" constant="50" id="tuz-ub-bXx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="oci-Lp-b2Z" kind="presentation" identifier="moveToMain" modalPresentationStyle="fullScreen" id="qvE-C1-Xdp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7y-By-vL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="-674"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WdZ-aX-kax">
             <objects>
                 <tabBarController id="oci-Lp-b2Z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="F8d-Np-Vkb"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="egj-sI-znf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -72,7 +120,7 @@
                             <constraint firstItem="iqa-HP-hbv" firstAttribute="trailing" secondItem="JQQ-ua-Qfa" secondAttribute="trailing" id="zhI-iY-O5h"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Top 100" id="jdC-ub-O5M">
+                    <tabBarItem key="tabBarItem" title="Favorites" id="jdC-ub-O5M">
                         <imageReference key="image" image="star.square" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Favorites" id="Zk2-IQ-t1e">
@@ -130,7 +178,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 100 Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-ce-irW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top 100 by market cap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-ce-irW">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -162,6 +210,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pngegg" width="512" height="512"/>
         <image name="square.stack.fill" catalog="system" width="113" height="128"/>
         <image name="star.square" catalog="system" width="128" height="114"/>
         <namedColor name="darkYellow">

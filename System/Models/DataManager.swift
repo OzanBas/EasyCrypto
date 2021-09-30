@@ -11,6 +11,7 @@ import UIKit
 
 protocol DataManagerDelegate {
     func didFinishUpdating()
+    func didCheckFavoriteStasus()
 }
 
 
@@ -36,6 +37,7 @@ class DataManager {
                                 ListViewArray.append(ListViewModel(name: item.name, image: item.image, id: item.id, current_price: item.current_price, isFavorite: false))
                             }
                             self.delegate?.didFinishUpdating()
+                            self.delegate?.didCheckFavoriteStasus()
                         } catch {
                             print(error)
                         }
@@ -45,4 +47,5 @@ class DataManager {
             task.resume()
         }
     }
+    
 }

@@ -45,6 +45,8 @@ class ListViewCell: UITableViewCell {
 
     @IBAction func favButtonTapped(_ sender: UIButton) {
         link?.handleFavorites(cell: self)
+        handleDataArray()
+
     }
     
     @IBAction func detailButtonTapped(_ sender: UIButton) {

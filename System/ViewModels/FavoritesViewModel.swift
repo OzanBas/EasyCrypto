@@ -14,7 +14,3 @@ struct FavoritesViewModel : Hashable {
     var current_price: Double?
     var isFavorite : Bool
 }
-
-var favsViewArray : [ListViewModel] = []
-
-

@@ -30,10 +30,19 @@ class FavoritesViewController: UIViewController {
         super.viewWillAppear(true)
         DispatchQueue.main.async {
             getSelections()
+            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.constantUpdates), userInfo: nil, repeats: true)
             self.favoritesTableView.reloadData()
         }
     }
     
+    var attempPriceUpdate = 0
+    @objc private func constantUpdates() {
+        priceUpdater()
+        attempPriceUpdate += 1
+        print(attempPriceUpdate)
+        self.favoritesTableView.reloadData()
+        
+    }
 
 }
 
@@ -52,11 +61,20 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = favsViewArray[indexPath.row].name
         cell.cellImage.downloaded(from: favsViewArray[indexPath.row].image!)
         let price = favsViewArray[indexPath.row].current_price!
+        var decimal = 2
 
-        cell.priceLabel.text = "$\(String(format: "%.2f", price))"
+        func priceHandler(price : Double) {
+            var x = price
+            while x*10.0 < 0.99 {
+                x = x * 10.0
+                decimal += 1
+            }
+        }
+        priceHandler(price: price)
+        
+        cell.priceLabel.text = "$\(String(format: "%.\(decimal)f", price))"
         
         
         return cell
     }
 }
-

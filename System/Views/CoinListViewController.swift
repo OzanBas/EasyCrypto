@@ -36,7 +36,6 @@ class CoinListViewController: UIViewController {
     
     func handleFavorites(cell: UITableViewCell) {
         let index = coinListViewTable.indexPath(for: cell)
-        print(ListViewArray[index!.row].isFavorite)
 
         if ListViewArray[index!.row].isFavorite == false {
             ListViewArray[index!.row].isFavorite = true
@@ -51,7 +50,6 @@ class CoinListViewController: UIViewController {
 
 extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(ListViewArray.count)
         return ListViewArray.count
     }
     
@@ -91,11 +89,9 @@ extension CoinListViewController: DataManagerDelegate {
         }
     }
     func didCheckFavoriteStasus() {
-        print("didCheckFavoriteStasus triggered.")
         for item in 0...ListViewArray.count-1 {
             for fav in favsViewArray {
                 if fav.id == ListViewArray[item].id {
-                    print("got one")
                     ListViewArray[item].isFavorite = true
                 }
             }

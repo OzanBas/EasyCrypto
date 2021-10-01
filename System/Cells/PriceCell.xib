@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="340" height="73"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oom-eP-u3a">
-                        <rect key="frame" x="85" y="19" width="245" height="27.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Oom-eP-u3a">
+                        <rect key="frame" x="85" y="19" width="150" height="27.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,13 +43,13 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="IIt-zB-cSY" secondAttribute="bottom" constant="5" id="FSn-X7-RQK"/>
                     <constraint firstAttribute="trailing" secondItem="drC-26-gym" secondAttribute="trailing" constant="15" id="I8l-0d-JS0"/>
+                    <constraint firstItem="drC-26-gym" firstAttribute="leading" secondItem="Oom-eP-u3a" secondAttribute="trailing" constant="10" id="IEn-gZ-K2U"/>
                     <constraint firstItem="IIt-zB-cSY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Oad-QF-rNI"/>
                     <constraint firstItem="drC-26-gym" firstAttribute="centerY" secondItem="IIt-zB-cSY" secondAttribute="centerY" id="b6j-lP-POc"/>
                     <constraint firstItem="IIt-zB-cSY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="bfa-jU-3Rg"/>
                     <constraint firstItem="drC-26-gym" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="kSD-6a-8ts"/>
                     <constraint firstItem="Oom-eP-u3a" firstAttribute="leading" secondItem="IIt-zB-cSY" secondAttribute="trailing" constant="15" id="klA-8M-78l"/>
                     <constraint firstItem="Oom-eP-u3a" firstAttribute="centerY" secondItem="IIt-zB-cSY" secondAttribute="centerY" id="u6I-Cb-SZO"/>
-                    <constraint firstAttribute="trailing" secondItem="Oom-eP-u3a" secondAttribute="trailing" constant="10" id="xZD-Ko-yxD"/>
                     <constraint firstAttribute="bottom" secondItem="drC-26-gym" secondAttribute="bottom" constant="10" id="yey-iM-NSd"/>
                 </constraints>
             </tableViewCellContentView>

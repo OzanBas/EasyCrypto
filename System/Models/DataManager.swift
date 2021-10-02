@@ -34,7 +34,7 @@ class DataManager {
                         do {
                             let apiResult = try decoder.decode([ApiModel].self, from: safeData)
                             for item in apiResult {
-                                ListViewArray.append(ListViewModel(name: item.name, image: item.image, id: item.id, current_price: item.current_price, isFavorite: false))
+                                ListViewArray.append(ListViewModel(name: item.name, image: item.image, id: item.id, current_price: item.current_price, isFavorite: false, priceStasus: ".white"))
                             }
                             self.delegate?.didFinishUpdating()
                             self.delegate?.didCheckFavoriteStasus()

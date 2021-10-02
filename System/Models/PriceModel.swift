@@ -24,20 +24,29 @@ struct UsdPrice : Decodable {
 
 func priceUpdater() {
     for each in 0...favsViewArray.count-1 {
-        let requestURL = priceRequestURL(for: favsViewArray[each].id!)
+        let requestURL = priceUrlCreator(for: favsViewArray[each].id!)
         PriceManager().getPrice(with: requestURL, for: favsViewArray[each].id!)
     }
 }
 
 func arrayPriceUpdater(with price : Double, for id: String) {
+    
     for each in 0...favsViewArray.count-1 {
         if id == favsViewArray[each].id {
+            if favsViewArray[each].current_price == price {
+                favsViewArray[each].priceStasus = ".white"
+            } else if favsViewArray[each].current_price! > price {
+                favsViewArray[each].priceStasus = ".red"
+            } else if favsViewArray[each].current_price! < price {
+                favsViewArray[each].priceStasus = ".green"
+            }
+            
             favsViewArray[each].current_price = price
         }
     }
 }
 
-func priceRequestURL(for id: String) -> String {
+func priceUrlCreator(for id: String) -> String {
     let string = PriceManager().baseURL
     let url = "\(string)/coins/\(id)"
     return url

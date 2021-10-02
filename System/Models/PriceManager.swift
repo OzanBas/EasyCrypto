@@ -12,7 +12,7 @@ import UIKit
 
 class PriceManager {
     
-    var baseURL = "https://api.coingecko.com/api/v3" //needs: /coins/coinID
+    var baseURL = "https://api.coingecko.com/api/v3" //needs: /coins/"coinID"
     
     
     func getPrice(with url: String, for coin: String) {

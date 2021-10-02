@@ -29,7 +29,8 @@ class FavoritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         DispatchQueue.main.async {
-            getSelections()
+            loadSelections()
+            self.constantUpdates()
             Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.constantUpdates), userInfo: nil, repeats: true)
             self.favoritesTableView.reloadData()
         }
@@ -58,11 +59,20 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "PriceCell", for: indexPath) as! PriceCell
         
-        cell.nameLabel.text = favsViewArray[indexPath.row].name
-        cell.cellImage.downloaded(from: favsViewArray[indexPath.row].image!)
-        let price = favsViewArray[indexPath.row].current_price!
-        var decimal = 2
+        configureCells(for: cell, at: indexPath)
+        
+        return cell
+    }
+}
 
+extension FavoritesViewController {
+    func configureCells(for cell: PriceCell, at: IndexPath) {
+        cell.nameLabel.text = favsViewArray[at.row].name
+        cell.cellImage.downloaded(from: favsViewArray[at.row].image!)
+        let price = favsViewArray[at.row].current_price!
+        var decimal = 2
+        var color : UIColor
+        
         func priceHandler(price : Double) {
             var x = price
             while x*10.0 < 0.99 {
@@ -70,11 +80,20 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
                 decimal += 1
             }
         }
+        
+        func chooseColor(_ name: String) -> UIColor{
+            switch name {
+            case ".red":
+                return UIColor.red
+            case ".green":
+                return UIColor.green
+            default :
+                return UIColor.black
+            }
+        }
+        
         priceHandler(price: price)
-        
         cell.priceLabel.text = "$\(String(format: "%.\(decimal)f", price))"
-        
-        
-        return cell
+        cell.priceLabel.textColor = chooseColor(favsViewArray[at.row].priceStasus)
     }
 }

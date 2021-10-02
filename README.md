@@ -1,4 +1,4 @@
-TraderDeneme
+EasyCrypto
 
 
 Basic cryptocurrency price tracker where you can select coins from a list which includes top 100 coins by marketcap volume and track their price info through "Favorites" section.

@@ -23,7 +23,7 @@ struct UsdPrice : Decodable {
 
 
 func priceUpdater() {
-    for each in 0...favsViewArray.count-1 {
+    for each in 0..<favsViewArray.count {
         let requestURL = priceUrlCreator(for: favsViewArray[each].id!)
         PriceManager().getPrice(with: requestURL, for: favsViewArray[each].id!)
     }

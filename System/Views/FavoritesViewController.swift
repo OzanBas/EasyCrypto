@@ -30,7 +30,6 @@ class FavoritesViewController: UIViewController {
         super.viewWillAppear(true)
         DispatchQueue.main.async {
             loadSelections()
-            self.constantUpdates()
             Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.constantUpdates), userInfo: nil, repeats: true)
             self.favoritesTableView.reloadData()
         }

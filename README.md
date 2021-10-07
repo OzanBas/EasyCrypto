@@ -1,19 +1,26 @@
 EasyCrypto
 
 
-Basic cryptocurrency price tracker where you can select coins from a list which includes top 100 coins by marketcap volume and track their price info through "Favorites" section.
+A cryptocurrency app that provides basic information.
+Currently working on design pattern to make code more readable.
 
 
 
+Features:
+
+- Gives a top100 list by market volume.
+- Selections from top100 list will be listed on favorites section, saved for later use and their price info actively tracked.
+- Gives detailed information for selected coin on a new view.
+
+
+
+Technical:
 
 - API:  https://www.coingecko.com/api/documentations/v3
 - PODs: No PODs (yet)
 - Design pattern: MVCish? I am not comfortable with design patters yet.
 
 
-
-
-Currently working on design pattern to make code more readable.
 
 
 ScreenShots:

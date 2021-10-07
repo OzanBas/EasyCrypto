@@ -7,4 +7,4 @@ Using this project as a training dummy. Everytime I learn a few new things I go 
 
 - API:  https://www.coingecko.com/api/documentations/v3
 - PODs: No PODs (yet)
-- Design pattern: MVCish? I am not comfortable with design patters yet. My aim is to evolve this into a MVVM.
+- Design pattern: MVCish? I am not comfortable with design patters yet.

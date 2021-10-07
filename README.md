@@ -12,6 +12,10 @@ Basic cryptocurrency price tracker where you can select coins from a list which 
 
 
 
+
+Currently working on design pattern to make code more readable.
+
+
 ScreenShots:
 
 

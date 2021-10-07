@@ -27,6 +27,8 @@
 		3F6FF6F32705EFDF00A70A26 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FF6F22705EFDF00A70A26 /* WelcomeViewController.swift */; };
 		3F6FF6F527072DFE00A70A26 /* PriceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FF6F427072DFE00A70A26 /* PriceManager.swift */; };
 		3F6FF6F7270730B400A70A26 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FF6F6270730B400A70A26 /* PriceModel.swift */; };
+		3F6FF6FD270C737D00A70A26 /* SingleDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FF6FC270C737C00A70A26 /* SingleDataModel.swift */; };
+		3F6FF6FF270C73AA00A70A26 /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FF6FE270C73AA00A70A26 /* DetailManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		3F6FF6F22705EFDF00A70A26 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3F6FF6F427072DFE00A70A26 /* PriceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceManager.swift; sourceTree = "<group>"; };
 		3F6FF6F6270730B400A70A26 /* PriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
+		3F6FF6FC270C737C00A70A26 /* SingleDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDataModel.swift; sourceTree = "<group>"; };
+		3F6FF6FE270C73AA00A70A26 /* DetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				3F376AC626DEA938007579EC /* DataManager.swift */,
-				3F6FF6F427072DFE00A70A26 /* PriceManager.swift */,
 				3F376ABF26DE4F05007579EC /* ApiModel.swift */,
+				3F6FF6F427072DFE00A70A26 /* PriceManager.swift */,
+				3F6FF6FE270C73AA00A70A26 /* DetailManager.swift */,
+				3F6FF6FC270C737C00A70A26 /* SingleDataModel.swift */,
 				3F6FF6F6270730B400A70A26 /* PriceModel.swift */,
 			);
 			path = Models;
@@ -328,8 +334,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6FF6FF270C73AA00A70A26 /* DetailManager.swift in Sources */,
 				3F6FF6F02704932C00A70A26 /* PriceCell.swift in Sources */,
 				3F376AC026DE4F05007579EC /* ApiModel.swift in Sources */,
+				3F6FF6FD270C737D00A70A26 /* SingleDataModel.swift in Sources */,
 				3F376AC726DEA938007579EC /* DataManager.swift in Sources */,
 				3F376AC426DE5C96007579EC /* ListViewCell.swift in Sources */,
 				3F376ABA26DCE43C007579EC /* CoinListViewController.swift in Sources */,

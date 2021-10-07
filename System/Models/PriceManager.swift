@@ -26,8 +26,8 @@ class PriceManager {
                     if let safeData = Data {
                         let decoder = JSONDecoder()
                         do {
-                            let apiResult = try decoder.decode(PriceModel.self, from: safeData)
-                            arrayPriceUpdater(with: apiResult.market_data?.current_price?.usd ?? 0, for: coin)
+                            let apiResult = try decoder.decode(SingleDataModel.self,from: safeData)
+                            arrayPriceUpdater(with: apiResult.market_data.current_price.usd ?? 0, with: apiResult.market_data.price_change_percentage_24h ?? 0, for: coin)
                             
                         } catch {
                             print(error)

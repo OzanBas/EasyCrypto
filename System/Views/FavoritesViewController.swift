@@ -26,6 +26,9 @@ class FavoritesViewController: UIViewController {
         favoritesTableView.register(UINib(nibName: "PriceCell", bundle: nil), forCellReuseIdentifier: "PriceCell")
     }
     
+    @IBAction func testButton(_ sender: UIButton) {
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         DispatchQueue.main.async {
@@ -66,8 +69,6 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FavoritesViewController {
     func configureCells(for cell: PriceCell, at: IndexPath) {
-        cell.nameLabel.text = favsViewArray[at.row].name
-        cell.cellImage.downloaded(from: favsViewArray[at.row].image!)
         let price = favsViewArray[at.row].current_price!
         var decimal = 2
         var color : UIColor
@@ -80,19 +81,42 @@ extension FavoritesViewController {
             }
         }
         
-        func chooseColor(_ name: String) -> UIColor{
+        func choosePriceColor(_ name: String) -> UIColor{
             switch name {
             case ".red":
-                return UIColor.red
+                return UIColor(named: "TradeRed")!
             case ".green":
-                return UIColor.green
+                return UIColor(named: "TradeGreen")!
             default :
-                return UIColor.black
+                return UIColor(named: "TitleLabel")!
             }
         }
         
+        
+        func choosePercentageColor() -> UIColor {
+            let result = favsViewArray[at.row].price_change_percentage_24h ?? 0.0
+            if result > 0 {
+                return UIColor(named: "TradeGreen")!
+            }
+            else if result < 0 {
+                return UIColor(named: "TradeRed")!
+            } else {
+                return UIColor.clear}
+        }
+        
+        
+        
         priceHandler(price: price)
-        cell.priceLabel.text = "$\(String(format: "%.\(decimal)f", price))"
-        cell.priceLabel.textColor = chooseColor(favsViewArray[at.row].priceStasus)
+
+        cell.nameLabel.text = "\((favsViewArray[at.row].symbol ?? "null").uppercased())/USD"
+        cell.percentageView.backgroundColor = choosePercentageColor()
+        cell.percentageLabel.text = "\(String(format: "%.2f", (favsViewArray[at.row].price_change_percentage_24h) ?? 0.0)) %"
+        cell.backgroundColor = UIColor(named: "Background")
+        cell.priceLabel.text = "\(String(format: "%.\(decimal)f", price))"
+        cell.priceLabel.textColor = choosePriceColor(favsViewArray[at.row].priceStasus)
     }
+}
+
+
+extension FavoritesViewController {
 }

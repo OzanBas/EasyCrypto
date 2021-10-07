@@ -9,10 +9,11 @@ import UIKit
 
 class PriceCell: UITableViewCell {
 
-    @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var percentageView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +26,5 @@ class PriceCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    
 }
 

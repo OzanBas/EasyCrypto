@@ -18,9 +18,7 @@ class CoinListViewController: UIViewController {
     let ListViewApiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     let manager = DataManager()
     let listViewCell = ListViewCell()
-    
-
-
+    let detailVC = CoinDetailViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +42,20 @@ class CoinListViewController: UIViewController {
         }
         coinListViewTable.reloadRows(at: [index!], with: .fade)
     }
+    
+    func requestDetailData(cell: UITableViewCell) {
+        let index = coinListViewTable.indexPath(for: cell)
+        let coinRequested = ListViewArray[index!.row].id!
+        let dataUrl = "\(DetailManager().baseURL)\(coinRequested)"
+        
+        DetailManager().getDetails(with: dataUrl)
+        
+    }
+
+    
 }
 
-//MARK: - TABLEVIEW RELATED SECTION
+//MARK: - TABLEVIEW
 
 extension CoinListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -50,6 +50,8 @@ class ListViewCell: UITableViewCell {
     }
     
     @IBAction func detailButtonTapped(_ sender: UIButton) {
+        link?.requestDetailData(cell: self)
+        link?.performSegue(withIdentifier: "MoveToDetail", sender: self)
     }
     
 }

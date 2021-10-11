@@ -47,7 +47,7 @@ class CoinDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BackToList" {
         let nextView = segue.destination as! UITabBarController
-        nextView.selectedIndex = 1
+        nextView.selectedIndex = 3
         }
         
     }

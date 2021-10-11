@@ -39,13 +39,8 @@ class DetailManager {
                         let decoder = JSONDecoder()
                         do {
                             let apiResult = try decoder.decode(SingleDataModel.self, from: safeData)
-                            detailsReady = SingleDataModel(market_data: apiResult.market_data,
-                                                           id: apiResult.id,
-                                                           symbol: apiResult.symbol,
-                                                           description: apiResult.description,
-                                                           image: apiResult.image,
-                                                           market_cap_rank: apiResult.market_cap_rank,
-                                                           name: apiResult.name)
+                            
+                            detailsReady = apiResult
                             
                         } catch {
                             print(error)

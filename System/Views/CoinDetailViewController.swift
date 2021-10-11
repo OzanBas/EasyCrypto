@@ -29,10 +29,13 @@ class CoinDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailDelegate = self
+        backButton.setTitle("", for: .normal)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

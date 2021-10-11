@@ -17,7 +17,9 @@ class FavoritesViewController: UIViewController {
     @IBOutlet var defaultBGView: UIView!
     @IBOutlet weak var defaultBGLabel: UILabel!
     
-
+    @IBOutlet weak var notifyView: UIView!
+    @IBOutlet weak var notifyLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +28,13 @@ class FavoritesViewController: UIViewController {
         favoritesTableView.register(UINib(nibName: "PriceCell", bundle: nil), forCellReuseIdentifier: "PriceCell")
     }
     
-    @IBAction func testButton(_ sender: UIButton) {
-        
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         DispatchQueue.main.async {
             loadSelections()
-            Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.constantUpdates), userInfo: nil, repeats: true)
+            self.notifyNoFav()
+            Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.constantUpdates), userInfo: nil, repeats: true)
             self.favoritesTableView.reloadData()
         }
     }
@@ -51,7 +52,7 @@ class FavoritesViewController: UIViewController {
 
 
 
-//MARK: - TableViewDataSource
+//MARK: - TABLEVIEW
 
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,18 +61,19 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "PriceCell", for: indexPath) as! PriceCell
-        
         configureCells(for: cell, at: indexPath)
-        
         return cell
     }
 }
+
+
+
+//MARK: - CONFIGURE CELL
 
 extension FavoritesViewController {
     func configureCells(for cell: PriceCell, at: IndexPath) {
         let price = favsViewArray[at.row].current_price!
         var decimal = 2
-        var color : UIColor
         
         func priceHandler(price : Double) {
             var x = price
@@ -117,6 +119,15 @@ extension FavoritesViewController {
     }
 }
 
-
 extension FavoritesViewController {
+    func notifyNoFav() {
+        if favsViewArray.count == 0 {
+            favoritesTableView.isHidden = true
+            notifyView.backgroundColor = UIColor(named: "Background")
+            notifyLabel.text = "No favorite selections. You can add via Top100 list."
+        } else {
+            favoritesTableView.isHidden = false
+        }
+    }
 }
+

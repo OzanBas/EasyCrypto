@@ -38,7 +38,5 @@ class PriceManager {
             task.resume()
         }
     }
-    
-    
 }
 

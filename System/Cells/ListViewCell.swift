@@ -40,7 +40,6 @@ class ListViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//        favButton.addTarget(self, action: #selector(handleFavoriteStasus), for: .touchUpInside)
     }
 
     @IBAction func favButtonTapped(_ sender: UIButton) {

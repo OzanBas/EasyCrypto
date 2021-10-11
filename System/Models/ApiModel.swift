@@ -7,6 +7,8 @@
 
 import UIKit
 
+// FIRST DATA MODEL IS NEEDED TO FETCH TOP100 COINS
+
 struct ApiModel : Hashable, Codable {
     var id: String?
     var name: String?

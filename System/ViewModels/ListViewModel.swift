@@ -22,33 +22,30 @@ struct ListViewModel : Hashable, Codable {
 }
 
 
-var selectionKey = "selection_list"
+
+var ListViewArray : [ListViewModel] =  [] {
+    didSet {
+        if ListViewArray.count == 99 {
+            filteredListViewArray = ListViewArray
+        }
+    }
+}
 
 
-
-var ListViewArray : [ListViewModel] =  []
 var favsViewArray : [ListViewModel] = []
+
+
+
+var filteredListViewArray : [ListViewModel] = []
+
 
 
 func updateFavsArray() {
     favsViewArray = ListViewArray.filter{$0.isFavorite == true}
+    
     saveSelections()
 }
 
-func saveSelections() {
-    if let encodedData = try? JSONEncoder().encode(favsViewArray) {
-        UserDefaults.standard.set(encodedData, forKey: selectionKey)
-    }
-}
-
-func loadSelections() {
-    guard let data = UserDefaults.standard.data(forKey: selectionKey),
-          let decodedData = try? JSONDecoder().decode([ListViewModel].self, from: data) else {
-              return
-          }
-    favsViewArray = decodedData
-    print("userdefaults get count: \(favsViewArray.count)")
-}
 
 extension UIImageView {
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
